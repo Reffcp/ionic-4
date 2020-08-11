@@ -8,34 +8,18 @@
 
 <ion-content padding>
   <ion-slides pager="true" [options]="slideOps">
-    <ion-slide>
+    <ion-slide *ngFor="let slide of slides">
       <ion-icon name="close"></ion-icon>
-      <img src="../../assets/icon/favicon.png" alt="logo" >
-      <h1>App musical</h1>
-      <h2>reproductor incluido</h2>
-      <p>Por: Cristian Covarrubias</p>
-      <ion-icon name="play"></ion-icon>
+      <img src="../../assets/icon/favicon.png" alt="logo">
+      <h1>{{slide.tittle}}</h1>
+      <h2>{{slide.subTitle}}</h2>
+      <p>{{slide.description}}</p>
+      <ion-icon name="{{slide.icon}}"></ion-icon>
     </ion-slide>
 
-    <ion-slide>
-      <ion-icon name="close"></ion-icon>
-      <img src="../../assets/icon/favicon.png" alt="logo" >
-      <h1>No es spotify</h1>
-      <h2>ni pretende serlo</h2>
-      <p>Solo puse a prueba mi creatividad</p>
-      <ion-icon name="play"></ion-icon>
-    </ion-slide>
 
-    <ion-slide>
-      <ion-icon name="close"></ion-icon>
-      <img src="../../assets/icon/favicon.png" alt="logo" >
-      <h1></h1>
-      <h2>Comencemos</h2>
-      <p></p>
-      <ion-icon name="play"></ion-icon>
-    </ion-slide>
   </ion-slides>
 
-  
+
 
 </ion-content>
