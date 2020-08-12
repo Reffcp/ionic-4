@@ -2,15 +2,15 @@
 <figure class="ion-text-center">
   <img src="../../assets/icon/favicon.png" alt="logo" >
 </figure>
-<form [formGroup]="loginForm" (ngSubmit)="loginForm.value">
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
   <ion-item>
     <ion-label>Email</ion-label>
     <ion-input formControlName="email"></ion-input>
   </ion-item>
   <div class="validation-error">
     <ng-container *ngFor="let validation of validationMessage.email">
-      <div *ngIf="(loginForm.get('email').hasError(validation.type) 
-      && loginForm.get('email').dirty) || loginForm.get('email').touched">
+      <div *ngIf="loginForm.get('email').hasError(validation.type) 
+      && (loginForm.get('email').dirty || loginForm.get('email').touched)">
       {{validation.message}}
       </div>
     </ng-container>
@@ -21,11 +21,16 @@
   </ion-item>
   <div class="validation-error">
     <ng-container *ngFor="let validation of validationMessage.password">
-      <div *ngIf="(loginForm.get('password').hasError(validation.type) 
-      && loginForm.get('password').dirty) || loginForm.get('password').touched">
+      <div *ngIf="loginForm.get('password').hasError(validation.type) 
+      && (loginForm.get('password').dirty || loginForm.get('password').touched)">
       {{validation.message}}
       </div>
     </ng-container>
   </div>
+  <ion-button expand="block" shape="round"
+  [disabled]="!loginForm.valid" type="submit">Ingresar</ion-button>
 </form>
 </ion-content>
+<ion-footer class="ion-text-center">
+  <ion-button expand="full" shape="round" fill="outline">Registrarme</ion-button>
+</ion-footer>
