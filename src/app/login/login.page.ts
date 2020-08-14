@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AutenticateService } from '../services/autenticate.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginPage implements OnInit {
       {type:"minlength", message:"El password debe ser de minimo 5 caracteres"},
     ]
   }
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+    private loginService:AutenticateService) {
     this.loginForm = formBuilder.group({
       email: new FormControl(
         "",
@@ -40,8 +42,9 @@ export class LoginPage implements OnInit {
   }
 
   login(data){
-    console.log(data);
-    
+    this.loginService.loginUser(data).then(res => {
+      
+    })
   }
 
 }
